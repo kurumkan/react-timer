@@ -11,10 +11,10 @@ module.exports = React.createClass({
 							React Timer App
 						</li>						
 						<li>
-							<IndexLink to="/" activeClassName="active" >Timer</IndexLink>			
+							<IndexLink to="/" activeClassName="active-link" >Timer</IndexLink>			
 						</li>
 						<li>
-							<Link to="/countdown" activeClassName="active" >Countdown</Link>			
+							<Link to="/countdown" activeClassName="active-link" >Countdown</Link>			
 						</li>
 					</ul>
 				</div>

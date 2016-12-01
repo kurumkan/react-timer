@@ -6,7 +6,7 @@ module.exports = (props)=>{
 			<div>							
 				<div>					
 					<Navigation/>	
-					<p>Hello world!!!</p>
+					<p>Main Component</p>
 					{props.children}
 				</div>
 			</div>
