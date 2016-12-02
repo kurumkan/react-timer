@@ -1,7 +1,14 @@
 var React = require('react');
+var $ = require('jquery');
+
 
 module.exports=React.createClass({
 	render: function(){
-		return <div> Timer</div>
+		console.log($);
+		return (
+			<div>
+				Timer
+			</div>
+		);
 	}
 });
