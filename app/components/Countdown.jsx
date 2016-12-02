@@ -6,8 +6,34 @@ module.exports=React.createClass({
 	getInitialState: function(){
 		return {
 			strSeconds: "",
-			count: 0
+			count: 0,
+			countdownStatus: 'stopped'
 		}
+	},
+
+	componentDidUpdate: function(prevProps, prevState){
+		var {countdownStatus} = this.state;
+		if(countdownStatus !==prevState.countdownStatus){
+			switch(countdownStatus){
+				case 'started':
+					this.startTimer();
+					break;
+				case 'stopped':
+					this.setState({
+						count: 0
+					});
+					break;	
+			}
+		}	
+	},
+
+	startTimer: function(){
+		this.timer = setInterval(()=>{
+			var newCount = this.state.count-1;
+			this.setState({
+				count: newCount >=0 ? newCount : 0
+			});
+		}, 1000);
 	},
 
 	handleChange: function(e){
@@ -19,7 +45,8 @@ module.exports=React.createClass({
 	handleSubmit: function(seconds){				
 		this.setState({
 			count: seconds,
-			strSeconds: ""
+			strSeconds: "",
+			countdownStatus: "started"
 		});				
 	},
 

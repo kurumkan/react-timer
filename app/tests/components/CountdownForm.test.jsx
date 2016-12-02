@@ -15,7 +15,7 @@ describe('CountdownForm', ()=>{
     var countdownForm = TestUtils.renderIntoDocument(
       <CountdownForm  
         handleSubmit={spy} 
-        
+        handleChange={function(){}}
         strSeconds={"109"} 
       />); 
 
@@ -29,7 +29,7 @@ describe('CountdownForm', ()=>{
     var countdownForm = TestUtils.renderIntoDocument(
     <CountdownForm  
     handleSubmit={spy} 
-
+    handleChange={function(){}}
     strSeconds={"109a"} 
     />); 
 
