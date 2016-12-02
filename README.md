@@ -1,2 +1,2 @@
 #React Timer
-See <a href="kurumkan-react-timer.herokuapp.com/">the demo</a>
+See <a href="http://kurumkan-react-timer.herokuapp.com/">the demo</a>
