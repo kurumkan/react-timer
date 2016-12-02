@@ -1,2 +1,2 @@
-.top-bar,.top-bar ul{background-color:#333}.top-bar .menu-text{color:#fff}.menu>.menu-text>a{display:inline-block;padding:0}.active-link{font-weight:bold}
+.top-bar,.top-bar ul{background-color:#333}.top-bar .menu-text{color:#fff}.menu>.menu-text>a{display:inline-block;padding:0}.active-link{font-weight:bold}.clock{align-items:center;background-color:#b5d0e2;border:#2099e8 2px solid;border-radius:50%;display:flex;justify-content:center;height:14rem;width:14rem;margin:4rem auto}.clock-text{color:#fff;font-size:2.25rem;font-weight:300}
 /*# sourceMappingURL=app.css.map */

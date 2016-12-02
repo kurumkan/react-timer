@@ -6,7 +6,7 @@ module.exports=React.createClass({
 		e.preventDefault();	
 		var value = this.props.strSeconds;
 		if(value.match(/^[0-9]*$/)&&value){
-			this.props.handleSubmit(parseInt(value, 10));	
+			this.props.handleSubmit(parseInt(value, 10));				
 		}
 	},
 

@@ -1,6 +1,7 @@
 var React = require('react');
 var Clock = require('Clock');
 var CountdownForm = require('CountdownForm');
+var Controls = require('Controls');
 
 module.exports=React.createClass({
 	getInitialState: function(){
@@ -12,7 +13,7 @@ module.exports=React.createClass({
 	},
 
 	componentDidUpdate: function(prevProps, prevState){
-		var {countdownStatus} = this.state;
+		var {countdownStatus} = this.state;				
 		if(countdownStatus !==prevState.countdownStatus){
 			switch(countdownStatus){
 				case 'started':
@@ -23,6 +24,10 @@ module.exports=React.createClass({
 						count: 0
 					});
 					break;	
+				case 'paused':									
+					clearInterval(this.timer);
+					this.timer=null;					
+					break;		
 			}
 		}	
 	},
@@ -45,20 +50,38 @@ module.exports=React.createClass({
 	handleSubmit: function(seconds){				
 		this.setState({
 			count: seconds,
-			strSeconds: "",
+			strSeconds: "",			
 			countdownStatus: "started"
-		});				
+		});			
+	},
+	
+	handleStatusChange: function(newStatus){		
+		this.setState({
+			countdownStatus: newStatus
+		});		
 	},
 
 	render: function(){
+		var {count, countdownStatus} = this.state;
+		var renderControlsAndForm = () => {			
+			if(countdownStatus !=='stopped'){					
+				return <Controls countdownStatus={countdownStatus} onStatusChange={this.handleStatusChange} />
+			}else{
+				return (
+					<CountdownForm 
+						strSeconds={this.state.strSeconds} 
+						handleChange={this.handleChange} 
+						handleSubmit={this.handleSubmit}
+					/>				
+				)
+			}
+
+		};
+
 		return (
 			<div> 
 				<Clock totalSeconds={this.state.count} />
-				<CountdownForm 
-					strSeconds={this.state.strSeconds} 
-					handleChange={this.handleChange} 
-					handleSubmit={this.handleSubmit}
-				/>
+				{renderControlsAndForm()}
 			</div>
 		);
 	}
