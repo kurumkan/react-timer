@@ -25,7 +25,7 @@ describe('Countdown', ()=>{
     });
   });
   
-  describe('startTimer', ()=>{
+  describe('start stop timer', ()=>{
     
     it('should stop countdown on 0', (done) => {
       var countdown = TestUtils.renderIntoDocument(<Countdown/>);
@@ -36,7 +36,26 @@ describe('Countdown', ()=>{
         done();
       }, 4001);
     });
+    it('should pause timer', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSubmit(20);     
+      countdown.handleStatusChange("paused");
+      var currentCount = countdown.state.count;
+      setTimeout(()=>{
+        expect(countdown.state.count).toBe(currentCount);    
+        expect(countdown.state.countdownStatus).toBe('paused');    
+        done();
+      }, 3001);
+    });
+    it('should stop timer', (done) => {
+      var countdown = TestUtils.renderIntoDocument(<Countdown/>);
+      countdown.handleSubmit(20);     
+      countdown.handleStatusChange("stopped");      
+      setTimeout(()=>{
+        expect(countdown.state.count).toBe(0);    
+        expect(countdown.state.countdownStatus).toBe('stopped');    
+        done();
+      }, 3001);
+    });
   });
-
-
 });
